@@ -16,16 +16,51 @@ describe('Controller: select group', function () {
     it('should set "controller_loaded" variable in scope', function () {
       expect(scope.controller_loaded).toContain('loaded');
     });
-    
-    fit('should return case 1', function () {
-      var result = scope.registro([1009 ,1017],[2011,2011]);
 
-      expect(result).toEqual([2011]);
+    it('should return a 1 case Still lifes / Bloque ', function () {
+
+      var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
+
+      var result = scope.checkNextBoard(board);
+
+      expect(result).toBe(board);
+    });
+
+/*
+    it('should return a 2 case Oscilators / Blinker ', function () {
+
+      var board = [[0,0,0,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,0,0,0]];
+
+      expect(scope.controller_loaded).toContain('loaded');
+    });
+*/
+    it('should return getAliveNeighbors', function () {
+      
+      var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
+
+      var x = 1;
+      var y = 1;
+
+      expect(scope.getAliveNeighbors(1,1,board)).toBe(3);
     });
     
-    it('should return case 2', function () {
-      
-    });
+    // it('should return case 1', function () {
+    //   scope.sum([1, 3]);
+    //   expect(scope.result).toBe(4);
+    // });
+
+    // it('should return case 2', function () {
+      // var result = scope.sum([10,5]);
+      // expect(result).toBe(15);
+    // });
+
+    // fit('should return case 3', function () {
+      // var result = scope.sum([10,5,6,null,7]);
+      // expect(result).toBe(28);
+
+      // result = scope.sum([10, undefined]);
+      // expect(result).toBe(10);
+    // });
   });
 
   describe('when going to /group', function () {
