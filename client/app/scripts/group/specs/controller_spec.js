@@ -41,7 +41,16 @@ describe('Controller: select group', function () {
       var x = 1;
       var y = 1;
 
-      expect(scope.getAliveNeighbors(1,1,board)).toBe(3);
+      expect(scope.getAliveNeighbors(x,y,board)).toBe(3);
+
+      x = 0;
+      y = 0;
+      expect(scope.getAliveNeighbors(x,y,board)).toBe(1);
+
+
+      x = 2;
+      y = 2;
+      expect(scope.getAliveNeighbors(x,y,board)).toBe(3);
     });
     
     // it('should return case 1', function () {
