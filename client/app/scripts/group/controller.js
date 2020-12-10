@@ -2,6 +2,9 @@
 
 angular.module('Group')
 .controller('group', function ($scope) {
+
+ 
+
   $scope.controller_loaded = 'Group loaded!';
   $scope.sum = function (numbers) {
     $scope.result = numbers.reduce(function(memo, number) {
@@ -14,21 +17,23 @@ angular.module('Group')
   };
 
   $scope.checkNextBoard = function (board){
+
     var nRows = board.length;
     var nCols = board[0].length;
-    var newBoard = board;
+    var newBoard = $scope.createNew(nCols,nRows);
 
     for(var col = 0 ; col < nCols ; col++){
       for(var row = 0 ; row < nRows ; row++){
         var neighbors = $scope.getAliveNeighbors(col,row,board);
         //rules to know if it will be alive;
-        newBoard[col][row] = board[col][row]? neighbors >= 2 && neighbors <= 3: neighbors === 3;
+        newBoard[col][row] = board[col][row] ? neighbors >= 2 && neighbors <= 3: neighbors === 3;
+        newBoard[col][row] = newBoard[col][row]?1:0;
       }
     }
     return newBoard;
-
   };
 
+ 
   $scope.getAliveNeighbors = function (x,y,board) {
 
     var nRows = board.length;
@@ -63,8 +68,16 @@ angular.module('Group')
     return neighbors;
   };
 
-  
-
+  $scope.createNew = function (nCols,nRows){
+    var newBoard = [];
+    for(var col = 0; col < nCols; col++){
+      newBoard[col] = [];
+      for(var row = 0; row < nRows; row++){
+        newBoard[col][row] = 0;
+      }
+    }
+    return newBoard;
+  };
 })
 .config(function ($routeProvider) {
   $routeProvider

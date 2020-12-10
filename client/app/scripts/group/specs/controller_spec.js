@@ -17,23 +17,6 @@ describe('Controller: select group', function () {
       expect(scope.controller_loaded).toContain('loaded');
     });
 
-    it('should return a 1 case Still lifes / Bloque ', function () {
-
-      var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
-
-      var result = scope.checkNextBoard(board);
-
-      expect(result).toBe(board);
-    });
-
-/*
-    it('should return a 2 case Oscilators / Blinker ', function () {
-
-      var board = [[0,0,0,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,0,0,0]];
-
-      expect(scope.controller_loaded).toContain('loaded');
-    });
-*/
     it('should return getAliveNeighbors', function () {
       
       var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
@@ -45,12 +28,152 @@ describe('Controller: select group', function () {
 
       x = 0;
       y = 0;
+      
       expect(scope.getAliveNeighbors(x,y,board)).toBe(1);
-
 
       x = 2;
       y = 2;
+
       expect(scope.getAliveNeighbors(x,y,board)).toBe(3);
+    });
+    it('should return a 1 case Create Blank Board ', function () {
+
+      var resultBoard = [
+        [0,0,0],
+        [0,0,0]
+    ];
+
+      var nRows = 3;
+      var nCols = 2;
+
+      var result = scope.createNew(nCols,nRows);
+
+      expect(result).toEqual(resultBoard);
+
+      
+    });
+
+    it('should return a 2 case Still lifes / Bloque ', function () {
+
+      var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
+
+      var result = scope.checkNextBoard(board);
+
+      expect(result).toEqual(board);
+
+      
+    });
+
+    it('should return a 3 case Oscilators / Blinker ', function () {
+
+     
+      var board = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [0,0,1,0,0],
+        [0,0,1,0,0],
+        [0,0,0,0,0]];
+      
+      var boardResult = [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,1,1,1,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]];
+
+      var result = scope.checkNextBoard(board);
+
+      expect(result).toEqual(boardResult);
+    });
+
+    
+
+    it('should return a 4 case Oscilators / Beacon ', function () {
+
+     
+      var board = [
+        [0,0,0,0,0,0],
+        [0,1,1,0,0,0],
+        [0,1,1,0,0,0],
+        [0,0,0,1,1,0],
+        [0,0,0,1,1,0],
+        [0,0,0,0,0,0]
+      ];
+      
+      var boardResult = [
+        [0,0,0,0,0,0],
+        [0,1,1,0,0,0],
+        [0,1,0,0,0,0],
+        [0,0,0,0,1,0],
+        [0,0,0,1,1,0],
+        [0,0,0,0,0,0]
+      ];
+
+      var result = scope.checkNextBoard(board);
+
+      expect(result).toEqual(boardResult);
+    });
+
+    it('should return a 5 case Spaceships / Glider ', function () {
+
+     
+      var board = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [1,0,1,0,0],
+        [0,1,1,0,0],
+        [0,0,0,0,0]
+      ];
+      
+      var boardResult1 = [
+        [0,0,0,0,0],
+        [0,1,0,0,0],
+        [0,0,1,1,0],
+        [0,1,1,0,0],
+        [0,0,0,0,0]
+      ];
+
+      var boardResult2 = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [0,0,0,1,0],
+        [0,1,1,1,0],
+        [0,0,0,0,0]
+      ];
+      var boardResult3 = [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,1,0,1,0],
+        [0,0,1,1,0],
+        [0,0,1,0,0]
+      ];
+      var boardResult4 = [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,1,0],
+        [0,1,0,1,0],
+        [0,0,1,1,0]
+      ];
+
+      var result = scope.checkNextBoard(board);
+
+      expect(result).toEqual(boardResult1);
+
+
+      result = scope.checkNextBoard(boardResult1);
+
+      expect(result).toEqual(boardResult2);
+
+
+      result = scope.checkNextBoard(boardResult2);
+
+      expect(result).toEqual(boardResult3);
+
+
+      result = scope.checkNextBoard(boardResult3);
+
+      expect(result).toEqual(boardResult4);
+
     });
     
     // it('should return case 1', function () {
