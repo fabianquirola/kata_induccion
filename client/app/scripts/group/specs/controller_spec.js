@@ -17,24 +17,24 @@ describe('Controller: select group', function () {
       expect(scope.controller_loaded).toContain('loaded');
     });
 
-    it('should return getAliveNeighbors', function () {
+    it('should return get_alive_neighbors', function () {
       
       var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
 
       var x = 1;
       var y = 1;
 
-      expect(scope.getAliveNeighbors(x,y,board)).toBe(3);
+      expect(scope.get_alive_neighbors(x,y,board)).toBe(3);
 
       x = 0;
       y = 0;
       
-      expect(scope.getAliveNeighbors(x,y,board)).toBe(1);
+      expect(scope.get_alive_neighbors(x,y,board)).toBe(1);
 
       x = 2;
       y = 2;
 
-      expect(scope.getAliveNeighbors(x,y,board)).toBe(3);
+      expect(scope.get_alive_neighbors(x,y,board)).toBe(3);
     });
     it('should return a 1 case Create Blank Board ', function () {
 
@@ -43,10 +43,10 @@ describe('Controller: select group', function () {
         [0,0,0]
     ];
 
-      var nRows = 3;
-      var nCols = 2;
+      var n_rows = 3;
+      var n_cols = 2;
 
-      var result = scope.createNew(nCols,nRows);
+      var result = scope.create_new_board(n_cols,n_rows);
 
       expect(result).toEqual(resultBoard);
 
@@ -57,7 +57,7 @@ describe('Controller: select group', function () {
 
       var board = [[0,0,0,0],[0,1,1,0],[0,1,1,0],[0,0,0,0]];
 
-      var result = scope.checkNextBoard(board);
+      var result = scope.check_next_generation(board);
 
       expect(result).toEqual(board);
 
@@ -74,23 +74,22 @@ describe('Controller: select group', function () {
         [0,0,1,0,0],
         [0,0,0,0,0]];
       
-      var boardResult = [
+      var board_result = [
         [0,0,0,0,0],
         [0,0,0,0,0],
         [0,1,1,1,0],
         [0,0,0,0,0],
         [0,0,0,0,0]];
 
-      var result = scope.checkNextBoard(board);
+      var result = scope.check_next_generation(board);
 
-      expect(result).toEqual(boardResult);
+      expect(result).toEqual(board_result);
     });
 
     
 
     it('should return a 4 case Oscilators / Beacon ', function () {
 
-     
       var board = [
         [0,0,0,0,0,0],
         [0,1,1,0,0,0],
@@ -100,7 +99,7 @@ describe('Controller: select group', function () {
         [0,0,0,0,0,0]
       ];
       
-      var boardResult = [
+      var board_result = [
         [0,0,0,0,0,0],
         [0,1,1,0,0,0],
         [0,1,0,0,0,0],
@@ -109,9 +108,9 @@ describe('Controller: select group', function () {
         [0,0,0,0,0,0]
       ];
 
-      var result = scope.checkNextBoard(board);
+      var result = scope.check_next_generation(board);
 
-      expect(result).toEqual(boardResult);
+      expect(result).toEqual(board_result);
     });
 
     it('should return a 5 case Spaceships / Glider ', function () {
@@ -125,7 +124,7 @@ describe('Controller: select group', function () {
         [0,0,0,0,0]
       ];
       
-      var boardResult1 = [
+      var board_result_1 = [
         [0,0,0,0,0],
         [0,1,0,0,0],
         [0,0,1,1,0],
@@ -133,21 +132,23 @@ describe('Controller: select group', function () {
         [0,0,0,0,0]
       ];
 
-      var boardResult2 = [
+      var board_result_2 = [
         [0,0,0,0,0],
         [0,0,1,0,0],
         [0,0,0,1,0],
         [0,1,1,1,0],
         [0,0,0,0,0]
       ];
-      var boardResult3 = [
+
+      var board_result_3 = [
         [0,0,0,0,0],
         [0,0,0,0,0],
         [0,1,0,1,0],
         [0,0,1,1,0],
         [0,0,1,0,0]
       ];
-      var boardResult4 = [
+      
+      var board_result_4 = [
         [0,0,0,0,0],
         [0,0,0,0,0],
         [0,0,0,1,0],
@@ -155,44 +156,28 @@ describe('Controller: select group', function () {
         [0,0,1,1,0]
       ];
 
-      var result = scope.checkNextBoard(board);
+      var result = scope.check_next_generation(board);
 
-      expect(result).toEqual(boardResult1);
-
-
-      result = scope.checkNextBoard(boardResult1);
-
-      expect(result).toEqual(boardResult2);
+      expect(result).toEqual(board_result_1);
 
 
-      result = scope.checkNextBoard(boardResult2);
+      result = scope.check_next_generation(board_result_1);
 
-      expect(result).toEqual(boardResult3);
+      expect(result).toEqual(board_result_2);
 
 
-      result = scope.checkNextBoard(boardResult3);
+      result = scope.check_next_generation(board_result_2);
 
-      expect(result).toEqual(boardResult4);
+      expect(result).toEqual(board_result_3);
+
+
+      result = scope.check_next_generation(board_result_3);
+
+      expect(result).toEqual(board_result_4);
 
     });
     
-    // it('should return case 1', function () {
-    //   scope.sum([1, 3]);
-    //   expect(scope.result).toBe(4);
-    // });
-
-    // it('should return case 2', function () {
-      // var result = scope.sum([10,5]);
-      // expect(result).toBe(15);
-    // });
-
-    // fit('should return case 3', function () {
-      // var result = scope.sum([10,5,6,null,7]);
-      // expect(result).toBe(28);
-
-      // result = scope.sum([10, undefined]);
-      // expect(result).toBe(10);
-    // });
+    
   });
 
   describe('when going to /group', function () {
