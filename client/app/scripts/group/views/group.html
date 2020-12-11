@@ -4,10 +4,9 @@
   <button ng-click="checkNextBoard([[0,0,0,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,0,0,0]])" class="kataFont">Init Test</button>
   <br><a href="#/" class="kataFont">Home</a>
 </div>
-Hola Mundo
+<div class="container">
 <div ng-repeat="col in board" class="columns">
-  <div ng-repeat="row in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}">
-    
+  <div ng-repeat="row in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}"> 
   </div>
-
+</div>
 </div>
