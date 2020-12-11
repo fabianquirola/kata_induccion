@@ -14,8 +14,8 @@
   Alive: {{alive_counter}}
 </div>
 <div class="container">
-<div ng-repeat="col in board" class="columns">
-  <div ng-repeat="row in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}"> 
+<div ng-repeat="(index_col, col) in board" class="columns">
+  <div ng-repeat="(index_row,row) in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}" ng-click="change_cell_value(index_col,index_row)"> 
   </div>
 </div>
 </div>

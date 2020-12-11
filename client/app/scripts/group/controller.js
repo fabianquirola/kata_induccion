@@ -3,9 +3,17 @@
 angular.module('Group')
 .controller('group', function ($scope) {
 
- 
+  $scope.board = [
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,0,0,0]];
 
+  $scope.generation_counter=1;
+  $scope.alive_counter=0;
   $scope.controller_loaded = 'Group loaded!';
+  
   $scope.sum = function (numbers) {
     $scope.result = numbers.reduce(function(memo, number) {
       number = number || 0;
@@ -19,16 +27,6 @@ angular.module('Group')
     return alive?1:0;
   };
 
-  $scope.board = [
-    [0,0,0,0,0],
-    [0,0,1,0,0],
-    [0,0,1,0,0],
-    [0,0,1,0,0],
-    [0,0,0,0,0]];
-
-
-  $scope.generation_counter=0;
-  $scope.alive_counter=0;
 
 
   $scope.check_next_generation = function (board){
@@ -103,16 +101,27 @@ angular.module('Group')
   };
 
   $scope.create_new_board_random = function (n_cols,n_rows){
+    $scope.alive_counter=0;
+    $scope.generation_counter=1;
     var new_board = [];
     for(var col = 0; col < n_cols; col++){
       new_board[col] = [];
       for(var row = 0; row < n_rows; row++){
         new_board[col][row] = Math.round(Math.random());
+        new_board[col][row]?$scope.alive_counter++:'';
       }
     }
     //return new_board;
-    $scope.board =new_board;
+    $scope.board = new_board;
   };
+
+  $scope.change_cell_value = function (col,row){
+    //var board = $scope.board;
+    console.log('cambiando',col,row);
+    $scope.board[col][row]?$scope.board[col][row]=0:$scope.board[col][row]=1;
+    $scope.board[col][row]?$scope.alive_counter++:$scope.alive_counter--;
+  };
+  
 })
 .config(function ($routeProvider) {
   $routeProvider

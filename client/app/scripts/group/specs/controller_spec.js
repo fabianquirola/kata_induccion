@@ -206,6 +206,27 @@ describe('Controller: select group', function () {
 
       expect(board_result_4).toEqual(scope.board);
       expect(i).toEqual(scope.generation_counter);
+      expect(5).toEqual(scope.alive_counter);
+
+    });
+
+    it('should change the cell', function () {
+
+      var board = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [1,0,1,0,0],
+        [0,1,1,0,0],
+        [0,0,0,0,0]
+      ];
+
+      scope.board =board;
+
+      var col =2;
+      var row =0;
+
+      scope.change_cell_value(col,row);
+      expect(0).toEqual(scope.board[col][row]);
 
     });
     
