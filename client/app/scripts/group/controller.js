@@ -19,6 +19,15 @@ angular.module('Group')
     return alive?1:0;
   };
 
+  $scope.board = [
+    [0,0,0,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,1,0,0],
+    [0,0,0,0,0]];
+
+
+
   $scope.check_next_generation = function (board){
 
     var n_rows = board.length;
