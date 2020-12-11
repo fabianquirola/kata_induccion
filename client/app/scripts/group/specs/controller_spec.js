@@ -176,6 +176,55 @@ describe('Controller: select group', function () {
       expect(result).toEqual(board_result_4);
 
     });
+
+    it('should return a 6 Iterate Board ', function () {
+
+     
+      var board = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [1,0,1,0,0],
+        [0,1,1,0,0],
+        [0,0,0,0,0]
+      ];
+      
+      var board_result_1 = [
+        [0,0,0,0,0],
+        [0,1,0,0,0],
+        [0,0,1,1,0],
+        [0,1,1,0,0],
+        [0,0,0,0,0]
+      ];
+
+      var board_result_2 = [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [0,0,0,1,0],
+        [0,1,1,1,0],
+        [0,0,0,0,0]
+      ];
+
+      var board_result_3 = [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,1,0,1,0],
+        [0,0,1,1,0],
+        [0,0,1,0,0]
+      ];
+      
+      var board_result_4 = [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,1,0],
+        [0,1,0,1,0],
+        [0,0,1,1,0]
+      ];
+
+      var result = scope.iterate_board(board);
+     
+      expect(board_result_1).toEqual(scope.board);
+
+    });
     
     
   });

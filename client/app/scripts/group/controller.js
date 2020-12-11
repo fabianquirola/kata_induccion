@@ -25,7 +25,7 @@ angular.module('Group')
     [0,0,1,0,0],
     [0,0,1,0,0],
     [0,0,0,0,0]];
-
+  $scope.generation_counter=0;
 
 
   $scope.check_next_generation = function (board){
@@ -88,6 +88,11 @@ angular.module('Group')
       }
     }
     return new_board;
+  };
+
+  $scope.iterate_board = function (board){
+    $scope.board=$scope.check_next_generation(board);
+    $scope.generation_counter++;
   };
 
   $scope.create_new_board_random = function (n_cols,n_rows){
