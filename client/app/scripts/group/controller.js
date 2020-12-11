@@ -1,19 +1,20 @@
 'use strict';
 
 angular.module('Group')
-.controller('group', function ($scope) {
+.controller('group', function ($scope, $interval) {
 
   $scope.board = [
     [0,0,0,0,0],
     [0,0,1,0,0],
     [0,0,1,0,0],
     [0,0,1,0,0],
-    [0,0,0,0,0]];
+    [0,0,0,0,0]
+  ];
 
   $scope.generation_counter=1;
   $scope.alive_counter=0;
   $scope.controller_loaded = 'Group loaded!';
-  
+
   $scope.sum = function (numbers) {
     $scope.result = numbers.reduce(function(memo, number) {
       number = number || 0;
@@ -120,6 +121,23 @@ angular.module('Group')
     console.log('cambiando',col,row);
     $scope.board[col][row]?$scope.board[col][row]=0:$scope.board[col][row]=1;
     $scope.board[col][row]?$scope.alive_counter++:$scope.alive_counter--;
+  };
+
+  var stop;
+  $scope.play = function() {
+    // Don't start a new fight if we are already fighting
+    if ( angular.isDefined(stop) ) return;
+
+      stop = $interval(function() {
+      $scope.iterate_board($scope.board);
+      }, 100);
+  };
+
+  $scope.stop = function() {
+    if (angular.isDefined(stop)) {
+      $interval.cancel(stop);
+      stop = undefined;
+    }
   };
   
 })

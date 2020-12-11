@@ -205,7 +205,7 @@ describe('Controller: select group', function () {
       }
 
       expect(board_result_4).toEqual(scope.board);
-      expect(i).toEqual(scope.generation_counter);
+      expect(i+1).toEqual(scope.generation_counter);
       expect(5).toEqual(scope.alive_counter);
 
     });
@@ -229,7 +229,18 @@ describe('Controller: select group', function () {
       expect(0).toEqual(scope.board[col][row]);
 
     });
-    
+
+    it('should play function exist', function () {
+
+      expect(scope.play).toBeDefined
+
+    });
+
+    it('should stop function exist', function () {
+
+      expect(scope.stop).toBeDefined
+      
+    });
     
   });
 
@@ -261,6 +272,8 @@ describe('Controller: select group', function () {
       expect(route.current.templateUrl).toBe('scripts/group/views/group.html');
       expect(route.current.controller).toBe('group');
     });
+
+    
   });
 
 });
