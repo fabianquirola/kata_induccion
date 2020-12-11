@@ -187,30 +187,7 @@ describe('Controller: select group', function () {
         [0,1,1,0,0],
         [0,0,0,0,0]
       ];
-      
-      var board_result_1 = [
-        [0,0,0,0,0],
-        [0,1,0,0,0],
-        [0,0,1,1,0],
-        [0,1,1,0,0],
-        [0,0,0,0,0]
-      ];
-
-      var board_result_2 = [
-        [0,0,0,0,0],
-        [0,0,1,0,0],
-        [0,0,0,1,0],
-        [0,1,1,1,0],
-        [0,0,0,0,0]
-      ];
-
-      var board_result_3 = [
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,1,0,1,0],
-        [0,0,1,1,0],
-        [0,0,1,0,0]
-      ];
+    
       
       var board_result_4 = [
         [0,0,0,0,0],
@@ -219,10 +196,16 @@ describe('Controller: select group', function () {
         [0,1,0,1,0],
         [0,0,1,1,0]
       ];
+      
+      scope.board = board;
+      var result = []; 
+      var i =0;
+      for(; i < 4;i++){
+        scope.iterate_board(scope.board);
+      }
 
-      var result = scope.iterate_board(board);
-     
-      expect(board_result_1).toEqual(scope.board);
+      expect(board_result_4).toEqual(scope.board);
+      expect(i).toEqual(scope.generation_counter);
 
     });
     

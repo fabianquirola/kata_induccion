@@ -3,7 +3,15 @@
 <div>
   
   <button ng-click="iterate_board(board)" class="kataFont">Iterate</button>
+  <button ng-click="create_new_board_random(10,15)" class="kataFont">Create new Random board</button>
+  
   <br><a href="#/" class="kataFont">Home</a>
+</div>
+<div>
+  Generation: {{generation_counter}}
+</div>
+<div>
+  Alive: {{alive_counter}}
 </div>
 <div class="container">
 <div ng-repeat="col in board" class="columns">

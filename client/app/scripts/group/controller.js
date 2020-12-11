@@ -25,29 +25,36 @@ angular.module('Group')
     [0,0,1,0,0],
     [0,0,1,0,0],
     [0,0,0,0,0]];
+
+
   $scope.generation_counter=0;
+  $scope.alive_counter=0;
 
 
   $scope.check_next_generation = function (board){
 
-    var n_rows = board.length;
-    var n_cols = board[0].length;
+    var n_rows = board[0].length;
+    var n_cols = board.length;
     var new_board = $scope.create_new_board(n_cols,n_rows);
+    var alive_counter = 0;
 
     for(var col = 0 ; col < n_cols ; col++){
       for(var row = 0 ; row < n_rows ; row++){ 
         //rules to know if it will be alive;
         new_board[col][row] = $scope.is_alive(col,row,board);
+        alive_counter = alive_counter + new_board[col][row];
       }
     }
+
+    $scope.alive_counter = alive_counter;
     return new_board;
   };
 
  
   $scope.get_alive_neighbors = function (x,y,board) {
 
-    var n_rows = board.length;
-    var n_cols = board[0].length;
+    var n_rows = board[0].length;
+    var n_cols = board.length;
     var neighbors = 0;
 
       if(x+1 < n_cols){
@@ -103,7 +110,8 @@ angular.module('Group')
         new_board[col][row] = Math.round(Math.random());
       }
     }
-    return new_board;
+    //return new_board;
+    $scope.board =new_board;
   };
 })
 .config(function ($routeProvider) {
