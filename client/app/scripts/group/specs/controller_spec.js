@@ -198,7 +198,7 @@ describe('Controller: select group', function () {
       ];
       
       scope.board = board;
-      var result = []; 
+
       var i =0;
       for(; i < 4;i++){
         scope.iterate_board(scope.board);
@@ -232,13 +232,13 @@ describe('Controller: select group', function () {
 
     it('should play function exist', function () {
 
-      expect(scope.play).toBeDefined
+      expect(scope.play).toBeDefined();
 
     });
 
     it('should stop function exist', function () {
 
-      expect(scope.stop).toBeDefined
+      expect(scope.stop).toBeDefined();
       
     });
 

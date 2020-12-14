@@ -115,7 +115,7 @@ angular.module('Group')
       new_board[col] = [];
       for(var row = 0; row < n_rows; row++){
         new_board[col][row] = Math.round(Math.random());
-        new_board[col][row]?$scope.alive_counter++:'';
+        if(new_board[col][row]){$scope.alive_counter++;}
       }
     }
     //return new_board;
@@ -123,16 +123,20 @@ angular.module('Group')
   };
 
   $scope.change_cell_value = function (col,row){
-    //var board = $scope.board;
-    console.log('cambiando',col,row);
-    $scope.board[col][row]?$scope.board[col][row]=0:$scope.board[col][row]=1;
-    $scope.board[col][row]?$scope.alive_counter++:$scope.alive_counter--;
+
+    if($scope.board[col][row]){
+      $scope.board[col][row]=0;
+      $scope.alive_counter--;
+    }else{
+      $scope.board[col][row]=1;
+      $scope.alive_counter++;
+    }
   };
 
   var stop;
   $scope.play = function() {
     // Don't start a new fight if we are already fighting
-    if ( angular.isDefined(stop) ) return;
+    if ( angular.isDefined(stop) ) {return;}
 
       stop = $interval(function() {
       $scope.iterate_board($scope.board);
