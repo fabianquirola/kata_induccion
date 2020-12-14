@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   node_server:
-   docker:
+    docker:
       - image: node:current-alpine
 
     working_directory: ~/server
