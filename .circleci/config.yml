@@ -4,11 +4,11 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  node-server:
+  node_server:
     steps:
       - checkout
       - run: cd server/ && npm install
-  node-client:
+  node_client:
     steps:
       - checkout
       - run: cd client/ && npm install
@@ -16,5 +16,5 @@ jobs:
 workflows:
   node-tests:
     jobs:
-      - node-server
-      - node-client
+      - node_server
+      - node_client
