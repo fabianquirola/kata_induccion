@@ -5,13 +5,23 @@ orbs:
 
 jobs:
   node_server:
+   docker:
+      - image: node:current-alpine
+
+    working_directory: ~/server
+    
     steps:
       - checkout
-      - run: cd server/ && npm install
+      - run: npm install
+      
   node_client:
+    docker:
+      - image: node:current-alpine
+
+    working_directory: ~/client
     steps:
       - checkout
-      - run: cd client/ && npm install
+      - run: npm install
 
 workflows:
   node-tests:
