@@ -3,33 +3,33 @@
     <div class="col-3 d-grid">
       <h3>Game of Life</h3>
       <div>
-        <h4> Generation: <span class="badge badge-primary">{{generation_counter}} </span></h4> 
+        <h4> Generation: <span class="badge badge-primary" id="generation_counter">{{generation_counter}}</span></h4> 
       </div>
       <div>
-        <h4> Alive: <span class="badge badge-success">{{alive_counter}}</span></h4> 
+        <h4> Alive: <span class="badge badge-success" id="alive_counter">{{alive_counter}}</span></h4> 
       </div>
       
-      <button type="button" ng-click="iterate_board(board)" class="kataFont btn btn-primary material-icons">
+      <button type="button" ng-click="iterate_board(board)" class="kataFont btn btn-primary material-icons" id='step'>
         <span class="material-icons">
           skip_next
         </span>
       </button>
-      <button type="button" ng-click="create_new_board_random(15,20)" class="kataFont btn btn-warning">
+      <button type="button" ng-click="create_new_board_random(15,20)" class="kataFont btn btn-warning" id="new_random">
         <span class="material-icons">
           autorenew
           </span>
       </button>
-      <button type="button" ng-click="play()" class="kataFont btn btn-success">
+      <button type="button" ng-click="play()" class="kataFont btn btn-success" id='play'>
         <span class="material-icons">
           play_circle_filled
           </span>
       </button>
-      <button type="button" ng-click="stop()" class="kataFont btn btn-info"> 
+      <button type="button" ng-click="stop()" class="kataFont btn btn-info" id='stop'> 
         <span class="material-icons">
           stop
           </span>
       </button>
-      <button type="button" ng-click="create_new_blank_board(15,20)" class="kataFont btn btn-secondary"> 
+      <button type="button" ng-click="create_new_blank_board(15,20)" class="kataFont btn btn-secondary" id='new_blank'> 
         <span class="material-icons">
           check_box_outline_blank
           </span>
@@ -45,7 +45,7 @@
     </div>
     <div class="col-9">
       <div ng-repeat="(index_col, col) in board" class="columns">
-        <div ng-repeat="(index_row,row) in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}" ng-click="change_cell_value(index_col,index_row)"> 
+        <div ng-repeat="(index_row,row) in col track by $index" class="whiteCell" ng-class="{liveCell: row ===1}" ng-click="change_cell_value(index_col,index_row)" > 
         </div>
       </div>
     </div>
