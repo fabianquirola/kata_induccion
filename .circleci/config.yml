@@ -2,8 +2,19 @@ version: 2.1
 working_directory: ~/server
 orbs:
   node: circleci/node@3.0.0
+
+jobs:
+  node-server:
+    steps:
+      - checkout
+      - run: cd server/ && npm install
+  node-client:
+    steps:
+      - checkout
+      - run: cd client/ && npm install
+
 workflows:
   node-tests:
     jobs:
-      - cd server
-      - node/test
+      - node-server
+      - node-client
