@@ -103,7 +103,7 @@ describe('Game of life tests',function (){
     
     cy.get('#play').click();
     
-    cy.wait(4000);
+    cy.wait(3950);
     
     cy.get('#stop').click();
 
@@ -114,6 +114,34 @@ describe('Game of life tests',function (){
     cy.get(':nth-child(13) > :nth-child(12)').should('have.class','liveCell');
 
     cy.get('#alive_counter').should('have.html','5');
+  
+  })
+
+  it('Test 5 Create new blank board',function(){
+   
+    cy.get('#new_blank').click();
+    cy.get('#alive_counter').should('have.html','0');
+    cy.get('#new_random').click();
+
+    cy.get('#step').click();
+    
+    cy.get('#play').click();
+    
+    cy.wait(1000);
+    
+    cy.get('#stop').click();
+
+    cy.get('#generation_counter').should('have.html','13');
+    cy.get('#new_blank').click();
+    cy.get('#alive_counter').should('have.html','0');
+  
+  })
+
+  it('Back to Home',function(){
+   
+    cy.contains('Home').click();
+    cy.url()
+    .should('include','/');
   
   })
 });
