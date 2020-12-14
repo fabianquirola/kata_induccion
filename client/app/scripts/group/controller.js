@@ -96,6 +96,12 @@ angular.module('Group')
     return new_board;
   };
 
+  $scope.create_new_blank_board = function (n_cols,n_rows){
+    $scope.board = $scope.create_new_board(n_cols,n_rows);
+    $scope.generation_counter=1;
+    $scope.alive_counter=0;
+  };
+
   $scope.iterate_board = function (board){
     $scope.board=$scope.check_next_generation(board);
     $scope.generation_counter++;

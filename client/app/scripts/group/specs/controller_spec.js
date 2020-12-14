@@ -241,6 +241,20 @@ describe('Controller: select group', function () {
       expect(scope.stop).toBeDefined
       
     });
+
+    it('should create blank board', function () {
+
+      var cols =3;
+      var rows =3;
+
+      scope.create_new_blank_board(cols,rows);
+
+      expect(scope.board.length).toBe(cols);
+      expect(scope.board[0].length).toBe(rows);
+      expect(1).toEqual(scope.generation_counter);
+      expect(0).toEqual(scope.alive_counter);
+      
+    });
     
   });
 

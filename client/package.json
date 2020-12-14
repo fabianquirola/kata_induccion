@@ -10,7 +10,9 @@
   "scripts": {
     "test": "karma start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cypress": "^6.1.0"
+  },
   "devDependencies": {
     "grunt": ">=1.0.1",
     "grunt-concurrent": ">=2.3.0",
