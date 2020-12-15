@@ -24,7 +24,7 @@ jobs:
       - run: npm install
       - run: npm install -g grunt
       - run: npm install -g karma
-      - run: grunt
+      - run: karma start
 
 workflows:
   node-tests:
