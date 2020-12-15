@@ -22,6 +22,8 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - run: npm install grunt
+      - run: npm install karma
       - run: grunt
 
 workflows:
